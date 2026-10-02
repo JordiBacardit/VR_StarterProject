@@ -1,7 +1,17 @@
 fileFormatVersion: 2
 guid: b139cbd19e80faa43b8ce5478f160f5f
+AssetOrigin:
+  serializedVersion: 1
+  productId: 165323
+  packageName: Auto Hand - VR Interaction
+  packageVersion: 4.0.4
+  assetPath: Assets/AutoHand/Examples/Textures/svgviewer-png-output (1).png
+  uploadId: 732375
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 492152916995597020
+    second: svgviewer-png-output (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -108,7 +118,29 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: svgviewer-png-output (1)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1600
+        height: 1600
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd2e1b0787a74d600800000000000000
+      internalID: 492152916995597020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -128,10 +160,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 165323
-  packageName: Auto Hand - VR Interaction
-  packageVersion: 4.0.4
-  assetPath: Assets/AutoHand/Examples/Textures/svgviewer-png-output (1).png
-  uploadId: 732375
