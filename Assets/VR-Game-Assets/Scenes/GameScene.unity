@@ -1151,6 +1151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1005023592}
+  - component: {fileID: 1005023593}
   m_Layer: 0
   m_Name: Cube Spawn Manager
   m_TagString: Untagged
@@ -1179,6 +1180,28 @@ Transform:
   - {fileID: 583533795}
   m_Father: {fileID: 1985224027}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1005023593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005023590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 063a9212b90e03f42b5f0bafb4c351e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CubeSpawner
+  cubePrefabs:
+  - {fileID: 9220460230358506278, guid: f1044f83bc9ee9145b22f20847ceb742, type: 3}
+  - {fileID: 784917196415359683, guid: b33d44cc0102bbb4db363d552a024fa0, type: 3}
+  spawnPoints: []
+  startDelay: 2
+  initialInterval: 2
+  minInterval: 0.5
+  intervalDecreasePerLevel: 0.15
+  secondsPerLevel: 10
+  maxLevel: 10
 --- !u!1 &1132402540
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,6 +1777,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377947595}
   m_CullTransparentMesh: 0
+--- !u!1001 &1385669925
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3722040142409477729, guid: 8e531972a0bd4423b7bbed53e78ae2be, type: 3}
+      propertyPath: m_Name
+      value: PlayerPistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101802235111929051, guid: 8e531972a0bd4423b7bbed53e78ae2be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101802235111929051, guid: 8e531972a0bd4423b7bbed53e78ae2be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.811
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101802235111929051, guid: 8e531972a0bd4423b7bbed53e78ae2be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.073
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101802235111929051, guid: 8e531972a0bd4423b7bbed53e78ae2be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5095922
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101802235111929051, guid: 8e531972a0bd4423b7bbed53e78ae2be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5095922
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101802235111929051, guid: 8e531972a0bd4423b7bbed53e78ae2be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.4902202
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101802235111929051, guid: 8e531972a0bd4423b7bbed53e78ae2be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.4902202
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101802235111929051, guid: 8e531972a0bd4423b7bbed53e78ae2be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101802235111929051, guid: 8e531972a0bd4423b7bbed53e78ae2be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -87.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101802235111929051, guid: 8e531972a0bd4423b7bbed53e78ae2be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8e531972a0bd4423b7bbed53e78ae2be, type: 3}
 --- !u!1 &1409727136
 GameObject:
   m_ObjectHideFlags: 0
@@ -3337,3 +3417,4 @@ SceneRoots:
   - {fileID: 1985224027}
   - {fileID: 761093061}
   - {fileID: 1586938588}
+  - {fileID: 1385669925}
