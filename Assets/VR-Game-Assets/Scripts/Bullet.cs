@@ -27,6 +27,15 @@ public class Bullet : MonoBehaviour
             if ((owner != null && hit.collider.transform.IsChildOf(owner)) || hit.collider.GetComponentInParent<Autohand.Hand>() != null)
                 continue;
 
+            // Botó de la UI (p. ex. tornar al lobby): disparar-hi és com clicar-lo
+            var button = hit.collider.GetComponent<UnityEngine.UI.Button>();
+            if (button != null && button.IsInteractable())
+            {
+                button.onClick.Invoke();
+                Destroy(gameObject);
+                return;
+            }
+
             // Cub de pistola: explota. Cub d'espasa: la bala s'atura però no el destrueix.
             var explode = hit.collider.GetComponentInParent<CubeExplode>();
             if (explode != null)
@@ -35,7 +44,15 @@ public class Bullet : MonoBehaviour
                 Destroy(gameObject);
                 return;
             }
-            if (hit.collider.GetComponentInParent<CubePhysics>() != null || !hit.collider.isTrigger)
+            var cube = hit.collider.GetComponentInParent<CubePhysics>();
+            if (cube != null)
+            {
+                // Bala contra un cub d'espasa: arma equivocada
+                cube.HitByWrongWeapon(hit.point);
+                Destroy(gameObject);
+                return;
+            }
+            if (!hit.collider.isTrigger)
             {
                 Destroy(gameObject);
                 return;

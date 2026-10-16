@@ -857,6 +857,7 @@ MonoBehaviour:
   countdownSeconds: 3
   audioSource: {fileID: 1967422818}
   clickSound: {fileID: 8300000, guid: 03ec7914d841f9f49b356472817453ae, type: 3}
+  tickSound: {fileID: 8300000, guid: 189477d628a135841850ad7ed25dd3b7, type: 3}
   counterText: {fileID: 1093025192}
 --- !u!153 &611810693
 ConfigurableJoint:
@@ -1854,6 +1855,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1280363026}
+  - component: {fileID: 1280363030}
   m_Layer: 0
   m_Name: '[MANAGERS]'
   m_TagString: Untagged
@@ -2043,6 +2045,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b539a71ab2b12444485b265e1f6e6589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music: {fileID: 8300000, guid: 30ffd95c028ba74409389c3370776546, type: 3}
+  musicVolume: 0.4
+  fadeInTime: 2
+  sfxVolume: 1
 --- !u!4 &1442044316
 Transform:
   m_ObjectHideFlags: 0
@@ -2537,3 +2543,15 @@ SceneRoots:
   - {fileID: 1213092995}
   - {fileID: 1280363026}
   - {fileID: 1239190491}
+--- !u!114 &1280363030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280363025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f352f71df4774582bd58a6783a470bcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

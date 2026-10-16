@@ -125,8 +125,8 @@ public class GunShooting : MonoBehaviour
 
         if (sound_shoot != null)
             sound_shoot.PlayOneShot(shootClip != null ? shootClip : sound_shoot.clip);
-        else if (shootClip != null)
-            AudioSource.PlayClipAtPoint(shootClip, origin.position);
+        else
+            AudioManager.PlaySfx(shootClip, origin.position);
 
         if (muzzleFlash != null)
             muzzleFlash.Play();

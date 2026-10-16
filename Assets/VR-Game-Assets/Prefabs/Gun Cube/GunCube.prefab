@@ -191,6 +191,8 @@ MonoBehaviour:
   shatterObject: {fileID: 0}
   shatterClip: shatter
   destroyDelay: 0.2
+  explodeSound: {fileID: 8300000, guid: c84ac7dddc3097b46be2ed3fc7016c7a, type: 3}
+  explodeVolume: 0.6
 --- !u!114 &-5394592354526695579
 MonoBehaviour:
   m_ObjectHideFlags: 0

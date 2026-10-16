@@ -9,6 +9,10 @@ public class CubeExplode : MonoBehaviour
     [Tooltip("Temps extra abans de destruir el cub un cop acabada l'animació")]
     [SerializeField] private float destroyDelay = 0.2f;
 
+    [Header("So")]
+    [SerializeField] private AudioClip explodeSound;
+    [SerializeField, Range(0f, 1f)] private float explodeVolume = 0.6f;
+
     private bool exploded = false;
 
     void Awake()
@@ -36,6 +40,11 @@ public class CubeExplode : MonoBehaviour
 
         foreach (var col in GetComponents<Collider>())
             col.enabled = false;
+
+        AudioManager.PlaySfx(explodeSound, transform.position, explodeVolume);
+
+        if (ScoreManager.Instance != null)
+            ScoreManager.Instance.CubeDestroyed();
 
         if (mainCube != null)
             mainCube.SetActive(false);

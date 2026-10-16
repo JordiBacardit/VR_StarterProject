@@ -14,6 +14,8 @@ public class PressButtonChangeScene : MonoBehaviour
     [Header("So")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip clickSound;
+    [Tooltip("So a cada segon del compte enrere")]
+    [SerializeField] private AudioClip tickSound;
 
     [Header("UI (opcional)")]
     [SerializeField] private TMP_Text counterText;
@@ -54,10 +56,16 @@ public class PressButtonChangeScene : MonoBehaviour
 
     private IEnumerator CountdownAndLoad()
     {
+        // La música del lobby s'apaga durant el compte enrere
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.FadeOutMusic(countdownSeconds);
+
         for (int i = Mathf.CeilToInt(countdownSeconds); i > 0; i--)
         {
             if (counterText != null)
                 counterText.text = i.ToString();
+            if (tickSound != null && audioSource != null)
+                audioSource.PlayOneShot(tickSound);
             yield return new WaitForSeconds(1f);
         }
 

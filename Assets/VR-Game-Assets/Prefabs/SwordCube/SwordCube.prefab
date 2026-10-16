@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2658914618188550336}
   - component: {fileID: 1830747692}
   - component: {fileID: 2591030805154398139}
+  - component: {fileID: 5500000000000000010}
   m_Layer: 8
   m_Name: SwordCube
   m_TagString: Untagged
@@ -157,3 +158,19 @@ MonoBehaviour:
   baseSpeed: 2
   speedPerLevel: 0.75
   maxLifetime: 30
+--- !u!114 &5500000000000000010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 784917196415359683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee726122e05d4afabf129d62b41455e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minSliceSpeed: 1.5
+  sliceVfx: {fileID: 785496508992942865, guid: c9195fd1af1289d45896d3e553af48d7, type: 3}
+  sliceSound: {fileID: 8300000, guid: ab06b989577f4eb4a9dc9987190e3844, type: 3}
+  vfxLifetime: 2

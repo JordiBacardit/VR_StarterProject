@@ -4,10 +4,16 @@ using UnityEngine;
 
 public enum HandSide { Left, Right }
 
-// Fa que la pistola comenci agafada a la mà escollida i hi torni sola si es deixa anar.
+// Objectes que es col·loquen ells mateixos a la mà abans de ser agafats (p. ex. l'espasa)
+public interface IHandAligner
+{
+    void AlignToHand(Hand hand);
+}
+
+// Fa que l'objecte (pistola, espasa...) comenci agafat a la mà escollida i hi torni sol si es deixa anar.
 // Es pot canviar de mà en temps d'execució amb SetHand() / SwapHand().
 [RequireComponent(typeof(Grabbable))]
-public class GunHandAttacher : MonoBehaviour
+public class HandAttacher : MonoBehaviour
 {
     [SerializeField] private HandSide hand = HandSide.Right;
     [Tooltip("Si està desactivat, la pistola queda a l'escena i el jugador l'ha d'agafar")]
@@ -22,6 +28,7 @@ public class GunHandAttacher : MonoBehaviour
 
     private Grabbable grabbable;
     private Coroutine returnRoutine;
+    private Coroutine grabRoutine;
 
     void Awake()
     {
@@ -52,6 +59,7 @@ public class GunHandAttacher : MonoBehaviour
     {
         // Recorda quina mà la té (també si el jugador la canvia de mà ell mateix)
         hand = h.left ? HandSide.Left : HandSide.Right;
+        AudioManager.Play(SfxEvent.Grab, transform.position);
         if (returnRoutine != null)
         {
             StopCoroutine(returnRoutine);
@@ -82,7 +90,7 @@ public class GunHandAttacher : MonoBehaviour
             return;
         }
 
-        // Deixa anar la pistola de la mà que la tingui ara (forçat, per si té GrabLock)
+        // Deixa anar l'objecte de la mà que el tingui ara (forçat, per si té GrabLock)
         if (grabbable.IsHeld())
             grabbable.ForceHandsRelease();
 
@@ -91,7 +99,49 @@ public class GunHandAttacher : MonoBehaviour
             target.holdingObj.ForceHandRelease(target);
 
         hand = side;
-        target.ForceGrab(grabbable);
+
+        if (grabRoutine != null)
+            StopCoroutine(grabRoutine);
+        grabRoutine = StartCoroutine(GrabWithRetries(target));
+    }
+
+    // Si l'agafada falla (AutoHand no troba el collider), ho torna a provar uns quants cops.
+    // Entre intents l'objecte queda congelat perquè no caigui.
+    private IEnumerator GrabWithRetries(Hand target)
+    {
+        const int maxAttempts = 10;
+        var body = grabbable.body;
+        bool wasKinematic = body != null && body.isKinematic;
+        var aligner = GetComponent<IHandAligner>();
+
+        for (int attempt = 0; attempt < maxAttempts; attempt++)
+        {
+            if (body != null)
+                body.isKinematic = wasKinematic;
+
+            // Si l'objecte sap com col·locar-se a la mà, ho fa abans que AutoHand l'agafi tal com estigui
+            if (aligner != null)
+                aligner.AlignToHand(target);
+
+            target.ForceGrab(grabbable);
+
+            yield return null;
+            yield return null;
+
+            if (grabbable.IsHeld())
+            {
+                grabRoutine = null;
+                yield break;
+            }
+
+            if (body != null)
+                body.isKinematic = true;
+        }
+
+        if (body != null)
+            body.isKinematic = wasKinematic;
+        grabRoutine = null;
+        Debug.LogWarning($"{name}: la mà {hand} no ha pogut agafar l'objecte després de {maxAttempts} intents.", this);
     }
 
     public void SwapHand()
